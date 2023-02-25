@@ -3,7 +3,7 @@ import { LeftSide } from './LeftSide/LeftSide';
 import { RightSide } from './RightSide/RightSide';
 
 function App() {
-  const [link, setLink] = useState(null);
+  const [link, setLink] = useState('');
 
   const itemClick = link => setLink(link);
 

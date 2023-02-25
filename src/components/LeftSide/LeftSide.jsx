@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { List, ListItem, Button, CircularProgress } from '@mui/material';
 import { capitalize } from '../helpers/capitalize';
@@ -8,9 +9,13 @@ export function LeftSide({ itemClick }) {
   const [pokemonList, setPokemonList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    handleFetch();
-  }, [page]);
+  useEffect(
+    () => {
+      handleFetch();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [page]
+  );
 
   const handleFetch = () => {
     setLoading(true);
@@ -56,3 +61,7 @@ export function LeftSide({ itemClick }) {
     </div>
   );
 }
+
+LeftSide.propTypes = {
+  itemClick: PropTypes.func.isRequired,
+};

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { CircularProgress, List, ListItem } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { capitalize } from '../helpers/capitalize';
@@ -7,11 +8,15 @@ export function RightSide({ link }) {
   const [loading, setLoading] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
 
-  useEffect(() => {
-    if (link) {
-      handleFetch(link);
-    }
-  }, [link]);
+  useEffect(
+    () => {
+      if (link) {
+        handleFetch(link);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [link]
+  );
 
   const handleFetch = () => {
     setImageLoading(true);
@@ -96,3 +101,7 @@ export function RightSide({ link }) {
     </>
   );
 }
+
+RightSide.propTypes = {
+  link: PropTypes.string.isRequired,
+};
